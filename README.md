@@ -22,7 +22,7 @@ Some papers on Contrastive Learning:
 
 Some papers on Image Clustering:
 * SCAN: Learning to Classify Images without Labels: https://arxiv.org/abs/2005.12320 (code available at https://github.com/wvangansbeke/Unsupervised-Classification)
-
+* Local Aggregation for Unsupervised Learning of Visual Embeddings: https://arxiv.org/pdf/1903.12355.pdf
 
 # Active Learning
 
