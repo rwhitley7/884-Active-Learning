@@ -7,7 +7,6 @@ Modern technology has provided an enormous amount of data that can be utilized f
 Coresets/Images summarization are techniques used to create a subset of images that are much smaller than the dataset that still capture similar information and can be used to reduce labeling and computational costs.
 
 Some papers on Coresets/Image summarization:
-
-Bayesian Batch Active Learning as Sparse Subset Approximation: https://arxiv.org/pdf/1908.02144.pdf
+* Bayesian Batch Active Learning as Sparse Subset Approximation: https://arxiv.org/pdf/1908.02144.pdf
 
 
