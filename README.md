@@ -16,7 +16,7 @@ Some papers on Coresets:
 
 Some papers on Contrastive Learning:
 * A Framework and Review: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/stamp/stamp.jsp?tp=&arnumber=9226466
-Understanding Contrastive Learning Requires Incorporating Inductive Biases: https://arxiv.org/pdf/2202.14037.pdf
+* Understanding Contrastive Learning Requires Incorporating Inductive Biases: https://arxiv.org/pdf/2202.14037.pdf
 * A Simple Framework for Contrastive Learning of Visual Representations: https://arxiv.org/abs/2002.05709 (code available at https://github.com/google-research/simclr)
 * Unsupervised Learning of Visual Features by Contrasting Cluster Assignments: https://arxiv.org/abs/2006.09882 (code available at https://github.com/facebookresearch/swav)
 
