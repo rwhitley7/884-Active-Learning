@@ -15,6 +15,8 @@ Some papers on Coresets:
 * Extending Contrastive Learning to Unsupervised Coreset Selection: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/stamp/stamp.jsp?tp=&arnumber=9680708
 
 Some papers on Contrastive Learning:
+* A Simple Framework for Contrastive Learning of Visual Representations: https://arxiv.org/abs/2002.05709 (code available at https://github.com/google-research/simclr)
+* Unsupervised Learning of Visual Features by Contrasting Cluster Assignments: https://arxiv.org/abs/2006.09882 (code available at https://github.com/facebookresearch/swav)
 
 
 # Active Learning
