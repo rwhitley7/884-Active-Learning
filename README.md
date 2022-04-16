@@ -1,10 +1,34 @@
 # Introduction
 
-Modern technology has provided an enormous amount of data that can be utilized for machine learning applications. However, for supervised learning tasks, this creates larger labeling and computational costs. For this reason, techniques such as Active Learning and Coresets have been heavily explored to remove data that provides the least information to the model. This allows large datasets to be summarized into smaller subsets that captures the same information, while maintaining similar performance levels. We explore different combinations of Coresets and Active learning techniques on the CIFAR10/100 datasets to provide quantitative analysis that can be leveraged for future supervised machine learning tasks.
+Modern technology has provided an enormous amount of data that can be utilized for machine learning applications. However, for supervised learning tasks, this creates larger labeling and computational costs. For this reason, techniques such as Active Learning have been explored to reduce the amount of data needed to train a model. Since some data samples provide more information to the model than others, Active Learning looks to extract the most informative samples from the data pool iteratively. 
 
-# Image Summarization / Coresets / Contrastive Learning / Image Clustering
+Many different metrics have been applied by researchers to determine which samples provide most useful. In general, however, these techniques have been explored individually and in different environments, making comparisons challenging. In this project, we explore a few of the most popular Active Learning techniques using the same model and hyper-parameters to provide quantitative analysis that can be leveraged for future supervised machine learning tasks. We also incorporate modern Deep Learning techniques, such as Contrastive Learning, to further improve Active Learning.
 
-Coresets/Images summarization are techniques used to create a subset of images that are much smaller than the dataset that still capture similar information and can be used to reduce labeling and computational costs.
+We use the ResNet architecture as our backbone paired with the CIFAR datasets for training and classification. Information on the CIFAR datasets can be found [here](https://www.cs.toronto.edu/~kriz/cifar.html).
+
+# Active Learning
+
+The Active Learning technique can be summarized as follows:
+1) Choose initial training subset, e.g. 10% of the training dataset
+2) Use this subset to train the model
+3) Test on the remainder of the training dataset, e.g. the other 90% of the training dataset
+4) Use the results from testing to chose next subset to add to the training subset, e.g choose the 10% that have the lowest confidence output
+5) Repeat 2-4 until desired accuracy is reached, e.g training subset is now 10% initially chosen + the 10% with the lowest confidence which will be tested on the remaining 80% of the training dataset to choose the next 10% of data to add
+
+Often, the initial subset is chosen randomly. However, it is clear that different subsets will provide different results. For example, if the inital subset contains many similar images, the model will perform well when classifying other similar images but will struggle classifying a range of diverse images. As a result of this, part 1 of our projects looks at applying machine learning techniques to remove the most reduntant images to maximize the diversity of our initial subset.
+
+# Part 1 - Using Contrastive Learning for Subset Initialization
+
+Contrastive Learning ...
+
+# Part 2 - Different Active Learning Techniques
+
+Active Learning ...
+
+
+# Relevant Papers and Github Repos
+
+Coresets/Images Summarization/Contrastive Learning are techniques used to create a subset of images that are much smaller than the dataset that still capture similar information and can be used to reduce labeling and computational costs.
 
 Some papers on Image Summarization:
 * Image Corpus Representative Summarization: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/document/8919310 (code available at https://github.com/Anurag14/ImageCorpusSummarization however it is not explained at all)
