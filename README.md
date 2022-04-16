@@ -8,7 +8,7 @@ We use the ResNet architecture as our backbone paired with the CIFAR datasets fo
 
 # Active Learning
 
-The Active Learning technique can be summarized as follows:
+Active Learning can be summarized as follows:
 1) Choose initial training subset, e.g. 10% of the training dataset
 2) Use this subset to train the model
 3) Test on the remainder of the training dataset, e.g. the other 90% of the training dataset
