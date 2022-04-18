@@ -19,7 +19,9 @@ Often, the initial subset is chosen randomly. However, it is clear that differen
 
 # Part 1 - Using Contrastive Learning for Subset Initialization
 
-Contrastive Learning ...
+[SCAN](https://arxiv.org/abs/2005.12320) groups images into semantically meanigful clusters without any labels. It is split in to two parts, with the first part being of interest to part one of our project. They use [SimCLR](https://arxiv.org/pdf/2002.05709.pdf), a self-supervised task that obtains semantically meaningful features via Contrastive Learning that are used for calculating each image's k-nearest neighbors. Leveraging the fact that each image in the dataset can be linked to other similar images, we attempt to remove as many of the closely related images so that we are left with the most diverse subset. Some examples of the images can be seen in figures 1,2, and 3.
+
+
 
 # Part 2 - Different Active Learning Techniques
 
