@@ -26,7 +26,7 @@ Often, the initial subset is chosen randomly. However, it is clear that differen
   <img src="https://user-images.githubusercontent.com/47162612/163762551-b82f8ea8-75ee-4c14-8a6c-682e514b3cc6.png" width="600" height="600">
 </p>
 
-The 3 nearest neighbors of the first 2 images belong to the same class and share similar features. However, the 3rd image clusters its 3 nearest neighbors from a different class. It is easy to understand why this is done, as the majority of the images from the 'truck' class have their beds flat. Therefore, the features extracted from this 'truck' image are more closely related to the features of the 'airplane' images, such as the wings.
+The 3 nearest neighbors of the first 2 images belong to the same class and share similar features. However, the 3rd image clusters its 3 nearest neighbors from a different class. It is easy to understand why this is done, as the majority of the images from the 'truck' class have their beds flat. Therefore, the features extracted from this 'truck' image are more closely related to the features of the 'airplane' images, such as the wings. These incorrect clusters from some images will not affect our work as we will only consider the nearest neighbors that belong to the same class.
 
 
 ## Part 2 - Different Active Learning Techniques
