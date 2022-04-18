@@ -13,7 +13,7 @@ Active Learning can be summarized as follows:
 1) Choose initial training subset, e.g. 10% of the training dataset
 2) Use this subset to train the model
 3) Test on the remainder of the training dataset, e.g. the other 90% of the training dataset
-4) Use the results from testing to chose next subset to add to the training subset, e.g choose the 10% that have the lowest confidence
+4) Use the results from testing to select next subset to add to the training subset, e.g choose the 10% that have the lowest confidence
 5) Repeat 2-4 until desired accuracy is reached, e.g training subset is now 10% initially chosen + the 10% with the lowest confidence which will be tested on the remaining 80% of the training dataset to choose the next 10% of data to add
 
 Often, the initial subset is chosen randomly. However, it is clear that different subsets will provide different results. For example, if the inital subset contains many similar images, the model will perform well when classifying other similar images but will struggle classifying a range of diverse images. As a result of this, part 1 of our projects looks at applying machine learning techniques to remove the most reduntant images to maximize the diversity of our initial subset.
