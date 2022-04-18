@@ -1,4 +1,5 @@
-# Introduction
+#ECE 884 Project
+##Introduction
 
 Modern technology has provided an enormous amount of data that can be utilized for machine learning applications. However, for supervised learning tasks, this creates larger labeling and computational costs. For this reason, techniques such as Active Learning have been explored to reduce the amount of data needed to train a model. Since some data samples provide more information to the model than others, Active Learning looks to extract the most informative samples from the data pool iteratively. 
 
