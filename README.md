@@ -20,13 +20,26 @@ Often, the initial subset is chosen randomly. However, it is clear that differen
 
 ## Part 1 - Using Contrastive Learning for Subset Initialization
 
-[SCAN](https://arxiv.org/abs/2005.12320) groups images into semantically meanigful clusters without any labels. It is split in to two parts, with the first part being of interest to part one of our project. They use [SimCLR](https://arxiv.org/pdf/2002.05709.pdf), a self-supervised task that obtains semantically meaningful features via Contrastive Learning that are used for calculating each image's k-nearest neighbors. Leveraging the fact that each image in the dataset can be linked to other similar images, we attempt to remove as many of the closely related images so that we are left with the most diverse subset. Some examples of the images can be seen below.
+[SCAN](https://arxiv.org/abs/2005.12320) groups images into semantically meanigful clusters without any labels. It is split in to two parts, with the first part being of interest to part 1 of our project. They use [SimCLR](https://arxiv.org/pdf/2002.05709.pdf), a self-supervised task that obtains semantically meaningful features via Contrastive Learning that are used to calculate each image's k-nearest neighbors. Leveraging the fact that each image in the dataset can be linked to other similar images, we attempt to remove as many of the closely related images so that we are left with the most diverse subset. Some examples of an image (far left image) and its 3 nearest neighbors can be seen below.
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/47162612/163762551-b82f8ea8-75ee-4c14-8a6c-682e514b3cc6.png" width="600" height="600">
+</p>
+
+The 3 nearest neighbors of the first 2 images belong to the same class and share similar features. However, the 3rd image clusters its 3 nearest neighbors from a different class. It is easy to understand why this is done, as the majority of the images from the 'truck' class have their beds flat. Therefore, the features extracted from this 'truck' image are more closely related to the features of the 'airplane' images, such as the wings.
 
 
 ## Part 2 - Different Active Learning Techniques
 
 Active Learning ...
+
+
+
+
+
+
+
+
 
 
 ### Relevant Papers and Github Repos
