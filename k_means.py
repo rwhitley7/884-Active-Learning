@@ -9,8 +9,8 @@ from torch.utils.data import SubsetRandomSampler, BatchSampler
 
 from resnet import ResNet18
 
-sys.path.insert(1, "C:\\Users\\protichi\\PycharmProjects\\884-Active-Learning\\kmeans_pytorch")
-from kmeans_pytorch import kmeans, kmeans_predict
+sys.path.insert(1, "/kmeans_pytorch2")
+from kmeans_pytorch2 import kmeans, kmeans_predict
 import torchvision
 from torchvision import transforms, models
 
