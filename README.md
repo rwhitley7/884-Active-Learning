@@ -3,9 +3,10 @@
 
 Modern technology has provided an enormous amount of data that can be utilized for machine learning applications. However, for supervised learning tasks, this creates larger labeling and computational costs. For this reason, techniques such as Active Learning have been explored to reduce the amount of data needed to train a model. Since some data samples provide more information to the model than others, Active Learning looks to extract the most informative samples from the data pool iteratively. 
 
-Many different metrics have been applied by researchers to determine which samples could provide most useful. In general, however, these techniques have been explored individually and in different environments, making comparisons challenging. In this project, we explore a few of the most popular Active Learning techniques using the same model and hyper-parameters to provide fair quantitative analysis that can be leveraged for future supervised machine learning tasks. We also incorporate modern Deep Learning techniques, such as Contrastive Learning, in an attempt to further improve Active Learning.
+Many different metrics have been applied by researchers to determine which samples could provide most useful. In general, however, these techniques have been explored individually and in different environments, making comparisons challenging. In this project, we explore a few of the most popular Active Learning techniques using the same model and hyper-parameters to provide fair, quantitative analysis that can be leveraged for future supervised machine learning tasks. We also incorporate modern Deep Learning techniques, such as Contrastive Learning, in an attempt to further improve Active Learning.
 
-We use the ResNet architecture as our backbone paired with the CIFAR datasets for training and classification. Information on the CIFAR datasets can be found [here](https://www.cs.toronto.edu/~kriz/cifar.html).
+We use the ResNet architecture as our backbone paired with the CIFAR datasets for training and classification. Information on the CIFAR datasets can be found [here](https://www.cs.toronto.edu/~kriz/cifar.html). We trained the model starting from a random 10% subset all the way up to the full dataset in 10% increments, with the accuracy values beeing shown below. These accuracies will be used as our baseline so that we can compare our techniques and determine whether our approach is beneficial or not.
+
 
 ## Active Learning
 
@@ -27,6 +28,8 @@ Often, the initial subset is chosen randomly. However, it is clear that differen
 </p>
 
 The 3 nearest neighbors of the first 2 images belong to the same class and share similar features. However, the 3rd image clusters its 3 nearest neighbors from a different class. It is easy to understand why this is done, as the majority of the images from the 'truck' class have their beds flat. Therefore, the features extracted from this 'truck' image are more closely related to the features of the 'airplane' images, such as the wings. These incorrect clusters from some images will not affect our work as we will only consider the nearest neighbors that belong to the same class.
+
+
 
 
 ## Part 2 - Different Active Learning Techniques
