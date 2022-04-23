@@ -7,8 +7,9 @@ Many different metrics have been applied by researchers to determine which sampl
 
 We use the ResNet architecture as our backbone paired with the CIFAR datasets for training and classification. Information on the CIFAR datasets can be found [here](https://www.cs.toronto.edu/~kriz/cifar.html). We trained the model starting from a random 10% subset all the way up to the full dataset in 10% increments, with the accuracy values beeing shown below. These accuracies will be used as our baseline so that we can compare our techniques and determine whether our approach is beneficial or not.
 
-![baseline_cifar10_resnet18](https://user-images.githubusercontent.com/47162612/164942566-ee440fe9-7bbd-49dd-87e7-6ee75ede7b4d.png)
-
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/47162612/164942566-ee440fe9-7bbd-49dd-87e7-6ee75ede7b4d.png" width="600" height="400">
+</p>
 ## Active Learning
 
 Active Learning can be summarized as follows:
@@ -25,13 +26,17 @@ Often, the initial subset is chosen randomly. However, it is clear that differen
 [SCAN](https://arxiv.org/abs/2005.12320) groups images into semantically meanigful clusters without any labels. It is split in to two parts, with the first part being of interest to part 1 of our project. They use [SimCLR](https://arxiv.org/pdf/2002.05709.pdf), a self-supervised task that obtains semantically meaningful features via Contrastive Learning that are used to calculate each image's k-nearest neighbors. Leveraging the fact that each image in the dataset can be linked to other similar images, we attempt to remove as many of the closely related images so that we are left with the most diverse subset. Some examples of an image (far left image) and its 3 nearest neighbors can be seen below.
 
 <p align="center">
-  <img src="https://user-images.githubusercontent.com/47162612/163762551-b82f8ea8-75ee-4c14-8a6c-682e514b3cc6.png" width="600" height="600">
+  <img src="https://user-images.githubusercontent.com/47162612/163762551-b82f8ea8-75ee-4c14-8a6c-682e514b3cc6.png" width="400" height="400">
 </p>
 
 The 3 nearest neighbors of the first 2 images belong to the same class and share similar features. However, the 3rd image clusters its 3 nearest neighbors from a different class. It is easy to understand why this is done, as the majority of the images from the 'truck' class have their beds flat. Therefore, the features extracted from this 'truck' image are more closely related to the features of the 'airplane' images, such as the wings. These incorrect clusters from some images will not affect our work as we will only consider the nearest neighbors that belong to the same class.
 
 As we are attempting to find a 10% subset that produces a higher accuracy than the random 10%, we removed different k values of neighbors to see their impacts. Each time we remove another k nearest neighbor, the subset gets smaller. Initially, with no neighbors removed (K = 0), the size of the CIFAR10 training dataset is 50k images. After removing each image's nearest neighbor (K = 1), our train subset was no reduced to ~35k images. We repeated this until we removed the 10 nearest neighbors (K = 10) for each images, reducing the size of the subset to ~14k images. From each subset, we chose a random 10% and tested on that to compare to the random 10% chosen from the full dataset. Our thoughs were that by removing images that were closely related to other images, we would be removing redundant data. This would give us a higher probability of choosing a random subset that is more diverse than if it was to be chosen from the full dataset. The graphs below show: (Left) The size of the subset with the different K neighbors removed, and (Right) the accuracy of the random 10% chosen from each subset.  
 
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/47162612/164944736-b97405e9-15f1-4814-882a-427bc43d6950.png">
+  <img src="https://user-images.githubusercontent.com/47162612/164944738-bc673ce3-20c3-4f51-ac48-ac72edc41ac5.png">
+</p>
 
 
 ## Part 2 - Different Active Learning Techniques
