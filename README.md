@@ -10,6 +10,7 @@ We use the ResNet architecture as our backbone paired with the CIFAR datasets fo
 <p align="center">
   <img src="https://user-images.githubusercontent.com/47162612/164942566-ee440fe9-7bbd-49dd-87e7-6ee75ede7b4d.png" width="600" height="400">
 </p>
+
 ## Active Learning
 
 Active Learning can be summarized as follows:
