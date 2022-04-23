@@ -7,6 +7,7 @@ Many different metrics have been applied by researchers to determine which sampl
 
 We use the ResNet architecture as our backbone paired with the CIFAR datasets for training and classification. Information on the CIFAR datasets can be found [here](https://www.cs.toronto.edu/~kriz/cifar.html). We trained the model starting from a random 10% subset all the way up to the full dataset in 10% increments, with the accuracy values beeing shown below. These accuracies will be used as our baseline so that we can compare our techniques and determine whether our approach is beneficial or not.
 
+![baseline_cifar10_resnet18](https://user-images.githubusercontent.com/47162612/164942566-ee440fe9-7bbd-49dd-87e7-6ee75ede7b4d.png)
 
 ## Active Learning
 
@@ -29,6 +30,7 @@ Often, the initial subset is chosen randomly. However, it is clear that differen
 
 The 3 nearest neighbors of the first 2 images belong to the same class and share similar features. However, the 3rd image clusters its 3 nearest neighbors from a different class. It is easy to understand why this is done, as the majority of the images from the 'truck' class have their beds flat. Therefore, the features extracted from this 'truck' image are more closely related to the features of the 'airplane' images, such as the wings. These incorrect clusters from some images will not affect our work as we will only consider the nearest neighbors that belong to the same class.
 
+As we are attempting to find a 10% subset that produces a higher accuracy than the random 10%, we removed different k values of neighbors to see their impacts. Each time we remove another k nearest neighbor, the subset gets smaller. Initially, with no neighbors removed (K = 0), the size of the CIFAR10 training dataset is 50k images. After removing each image's nearest neighbor (K = 1), our train subset was no reduced to ~35k images. We repeated this until we removed the 10 nearest neighbors (K = 10) for each images, reducing the size of the subset to ~14k images. From each subset, we chose a random 10% and tested on that to compare to the random 10% chosen from the full dataset. Our thoughs were that by removing images that were closely related to other images, we would be removing redundant data. This would give us a higher probability of choosing a random subset that is more diverse than if it was to be chosen from the full dataset. The graphs below show: (Left) The size of the subset with the different K neighbors removed, and (Right) the accuracy of the random 10% chosen from each subset.  
 
 
 
