@@ -112,11 +112,11 @@ Choosing the indices with the lowest confidence or the smallest difference in th
 
 ### K-Means based active learning
 For feature extraction, run the following: <br>
-`python feature_extractor.py`
+`python feature_extractor.py` <br>
 This should save a file with name "features.npy". <br>
 
 In order to perform k-means based active learning, run the following: <br>
-`python k_means.py`
+`python k_means.py` <br>
 This uses the features generated in earlier step. Before running this, kindly change the path to kmeans_pytorch2 folder on line 12.
 
 ## References
