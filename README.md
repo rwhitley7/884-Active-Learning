@@ -55,26 +55,38 @@ Active Learning ...
 
 ### Evaluation Results
 
-Active Learning : Method 1 - Least Confidence 
+Active Learning : Method 1 - Least Confidence
+
 ![Active Learning Method 1 - Least Confidence](https://user-images.githubusercontent.com/47718656/166968764-d46db83b-0a18-45c3-8870-ab4816794bba.jpg)
 
 Active Learning : Method 2 - 1 vs 2
+
 ![Active Learning  Method 2 - 1 vs 2](https://user-images.githubusercontent.com/47718656/166969087-bf9404fe-78df-4171-b6a1-085957424316.png)
 
 Active Learning : Method 3 - LL4AL [3]
+
 ![Active Learning Method 3 - LL4AL  3  1](https://user-images.githubusercontent.com/47718656/166969355-4c94c393-a42e-4e42-ad32-c55e04d60f17.jpg)
+
 ![Active Learning Method 3 - LL4AL  3  2](https://user-images.githubusercontent.com/47718656/166969379-a1ddacc5-eb6e-4604-b856-09112a37776b.jpg)
 
 Active Learning : Method 4 - KMeans
+
 ![Active Learning Method 4 - KMeans](https://user-images.githubusercontent.com/47718656/166969649-7a1ad987-8fea-4ea1-bfd2-387ebc84c851.jpg)
 
 Active Learning : Method 5 - PT4AL [4]
+
 ![Active Learning  Method 5 - PT4AL  4  1](https://user-images.githubusercontent.com/47718656/166970061-2545209a-9c1d-4bc5-ae2a-8ca0a71fef7c.jpg)
+
 ![Active Learning Method 5 - PT4AL  4  2](https://user-images.githubusercontent.com/47718656/166970084-50a4d22c-1f18-4b6a-a77d-a502448d6b3a.jpg)
 
 Comparison of AL Techniques
+
 ![Comparison of AL Techniques](https://user-images.githubusercontent.com/47718656/166970424-643a79b4-a61a-49b7-8618-2a30260d203b.jpg)
+
 PT4L achieves almost same accuracy as random 80% of the dataset using only 40%.  Our implementations achieve almost same accuracy as random 70% of the dataset using only 40%.  LL4AL and K-Means performed slightly worse than randomly choosing.
+
+
+
 
 ### Relevant Papers and Github Repos
 
