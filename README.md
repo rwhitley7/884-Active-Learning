@@ -119,6 +119,13 @@ In order to perform k-means based active learning, run the following: <br>
 `python k_means.py` <br>
 This uses the features generated in earlier step. Before running this, kindly change the path to kmeans_pytorch2 folder on line 12.
 
+### Learning-Loss for active learning
+We used off-the-shelf code which can be found at `https://github.com/Mephisto405/Learning-Loss-for-Active-Learning`
+
+### Self-supervised Pretext Tasks for active learning
+We used the official implementation which can be found at `https://github.com/johnsk95/PT4AL`. <br>
+For experiment setup, you may need CIFAR dataset in image form. You can use the data available at `https://github.com/YoongiKim/CIFAR-10-images`. This has data split into test and train with labels mentioned. 
+
 ## References
 
 * Extending Contrastive Learning to Unsupervised Coreset Selection: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/stamp/stamp.jsp?tp=&arnumber=9680708
