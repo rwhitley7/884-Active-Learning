@@ -103,8 +103,12 @@ ResNet-18 is used as the backbone network for the pretext task and the main task
 </p>
 PT4L achieves almost same accuracy as random 80% of the dataset using only 40%.  Our implementations achieve almost same accuracy as random 70% of the dataset using only 40%.  LL4AL and K-Means performed slightly worse than randomly choosing.
 
+## Running Code
+### Training and Testing
+The training and testing can be found in "main.py." Within this file, the amount of images to train and test can be specified as well as specific indices of images to use. Specific indices can be calculated using our Active Learning techniques.
 
-
+### Least Confidence and 1v2
+Choosing the indices with the lowest confidence or the smallest difference in the highest and second highest confidence can be found by runnning "python3 alearn.py." 1v2 is the current default, but uncommenting the line "s_inds = list(torch.topk(vals,10)[1].cpu().numpy())" will calculate the indices using the least confidence. After running the file, the new indices will be saved.
 
 ## Relevant Papers and Github Repos
 
