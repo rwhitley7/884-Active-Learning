@@ -9,15 +9,22 @@ import torchvision.transforms as transforms
 import torchvision.models as models
 from utils import progress_bar
 from torch.utils.data import random_split
-from resnet import ResNet18
+from resnet import ResNet18, ResNet50
+import pickle
 
 # Choose number of times to run training/testing 
 num_runs = 10
 total_train_accs = []
 total_test_accs = []
-val_size = 5000
-train_size = 45000
+#val_size = 5000
+#train_size = 20000
+with open("dif_active_90", "rb") as fp:   # Unpickling
+	indices = pickle.load(fp)
+print("Len of indices = ",len(indices))
 
+#with open("active_initial", "rb") as fp:   # Unpickling
+#       indices = pickle.load(fp)
+#print("Len of indices = ",len(indices))
 # Training
 def train(epoch):
 	print('\nEpoch: %d' % epoch)
@@ -83,18 +90,20 @@ for run in range(num_runs):
     		transforms.Normalize((0.4914, 0.4822, 0.4465), (0.2023, 0.1994, 0.2010))])
 
 	trainset = torchvision.datasets.CIFAR10(
-    		root='./data', train=True, download=True, transform=transform_train)
-
-	train_split, val_split = random_split(trainset, [len(trainset)-val_size, val_size])
-	train_split_use, train_split_disregard = random_split(train_split,[train_size,len(train_split)-train_size]) 
+    		root='../data', train=True, download=True, transform=transform_train)
+	subset_chosen = torch.utils.data.Subset(trainset, indices)
+	#train_split, val_split = random_split(trainset, [train_size, len(trainset)-train_size])
+	#train_split, val_split = random_split(subset_chosen, [len(subset_chosen)-val_size, val_size])
+	#train_split, val_split = random_split(subset_chosen, [train_size, len(subset_chosen)-train_size])
+	#train_split_use, train_split_disregard = random_split(subset_chosen,[train_size,len(subset_chosen)-train_size])
 
 	trainloader = torch.utils.data.DataLoader(
-    		train_split_use, batch_size=128, shuffle=True, num_workers=2)
-	valloader = torch.utils.data.DataLoader(
-		val_split, batch_size=128, shuffle=False, num_workers=2)
+    		subset_chosen, batch_size=128, shuffle=True, num_workers=2)
+	#valloader = torch.utils.data.DataLoader(
+	#	val_split, batch_size=128, shuffle=False, num_workers=2)
 
 	testset = torchvision.datasets.CIFAR10(
-    		root='./data', train=False, download=True, transform=transform_test)
+    		root='../data', train=False, download=True, transform=transform_test)
 	testloader = torch.utils.data.DataLoader(
     		testset, batch_size=100, shuffle=False, num_workers=2)
 
@@ -110,10 +119,12 @@ for run in range(num_runs):
 		momentum=0.9, weight_decay=5e-4)
 	scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-	for epoch in range(100):
+	for epoch in range(200):
 		train_acc = train(epoch)
-		eval_acc = test(valloader)
+		#eval_acc = test(valloader)
 		scheduler.step()
+	# save model
+	torch.save(net.state_dict(), 'dif_active_90_percent.pth')
 	test_acc = test(testloader)
 	total_train_accs.append(train_acc)
 	total_test_accs.append(test_acc)
