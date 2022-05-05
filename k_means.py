@@ -9,8 +9,8 @@ from torch.utils.data import SubsetRandomSampler, BatchSampler
 
 from resnet import ResNet18
 
-sys.path.insert(1, "/kmeans_pytorch2")
-from kmeans_pytorch2 import kmeans, kmeans_predict
+sys.path.insert(1, "C:\\Users\\protichi\\PycharmProjects\\884-Active-Learning\\kmeans_pytorch2")
+from kmeans_pytorch import kmeans, kmeans_predict
 import torchvision
 from torchvision import transforms, models
 
@@ -47,7 +47,7 @@ def train_dataload(indices):
 
     trainloader = torch.utils.data.DataLoader(
         trainset, num_workers=2,
-        batch_sampler=BatchSampler(SubsetRandomSampler(indices), batch_size=128, drop_last=False))
+        batch_sampler=BatchSampler(SubsetRandomSampler(indices), batch_size=500, drop_last=False))
 
     return trainloader
 
@@ -60,7 +60,7 @@ def test_dataloader():
     testset = torchvision.datasets.CIFAR10(
         root='./data', train=False, download=True, transform=transform_test)
     testloader = torch.utils.data.DataLoader(
-        testset, batch_size=100, shuffle=False, num_workers=2)
+        testset, batch_size=800, shuffle=False, num_workers=2)
 
     return testloader
 
@@ -80,7 +80,7 @@ def train_baseline(trainloader):
                           momentum=0.9, weight_decay=5e-4)
     scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=200)
 
-    for epoch in range(100):
+    for epoch in range(200):
         net.train()
         train_loss = 0
         correct = 0
@@ -88,14 +88,16 @@ def train_baseline(trainloader):
         for batch_idx, (inputs, targets) in enumerate(trainloader):
             inputs, targets = inputs.to(device), targets.to(device)
             optimizer.zero_grad()
-            outputs = net(inputs)
-            #with torch.set_grad_enabled(True):
-            loss = criterion(outputs, targets)
-            loss.backward()
-            optimizer.step()
+
+            with torch.set_grad_enabled(True):
+                outputs = net(inputs)
+                _, predicted = outputs.max(1)
+                loss = criterion(outputs, targets)
+                loss.backward()
+                optimizer.step()
 
             train_loss += loss.item()
-            _, predicted = outputs.max(1)
+
             total += targets.size(0)
             correct += predicted.eq(targets).sum().item()
 
@@ -136,11 +138,11 @@ if __name__ == '__main__':
     cluster_ids_x, cluster_centers, cluster_dist = clustering(features_cifar10_tensor, 10)
 
     values, indices = torch.sort(cluster_dist, descending=True)
-
-    for i in range(1, 11):
+    #values, indices = torch.sort(cluster_dist)
+    for i in range(1, 51):
         print(f"running for {i} iteration")
 
-        indices_10 = indices[0:int(i * 0.1 * len(indices))]
+        indices_10 = indices[0:int(i * 0.02 * len(indices))]
         print(indices_10.size())
 
         trainData = train_dataload(indices_10)

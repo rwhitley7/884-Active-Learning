@@ -104,11 +104,20 @@ ResNet-18 is used as the backbone network for the pretext task and the main task
 PT4L achieves almost same accuracy as random 80% of the dataset using only 40%.  Our implementations achieve almost same accuracy as random 70% of the dataset using only 40%.  LL4AL and K-Means performed slightly worse than randomly choosing.
 
 ## Running Code
-### Training and Testing
-The training and testing can be found in "main.py." Within this file, the amount of images to train and test can be specified as well as specific indices of images to use. Specific indices can be calculated using our Active Learning techniques.
+### Baseline results
+The training and testing for baseline results can be found in "main.py." Run this code to select subset for training at random. Within this file, the amount of images to train and test can be specified as well as specific indices of images to use. Specific indices can be calculated using any Active Learning techniques.
 
 ### Least Confidence and 1v2
 Choosing the indices with the lowest confidence or the smallest difference in the highest and second highest confidence can be found by runnning "python3 alearn.py." 1v2 is the current default, but uncommenting the line "s_inds = list(torch.topk(vals,10)[1].cpu().numpy())" will calculate the indices using the least confidence. After running the file, the new indices will be saved.
+
+### K-Means based active learning
+For feature extraction, run the following: <br>
+`python feature_extractor.py`
+This should save a file with name "features.npy". <br>
+
+In order to perform k-means based active learning, run the following: <br>
+`python k_means.py`
+This uses the features generated in earlier step. Before running this, kindly change the path to kmeans_pytorch2 folder on line 12.
 
 ## References
 
@@ -119,4 +128,4 @@ Choosing the indices with the lowest confidence or the smallest difference in th
 * Unsupervised Learning of Visual Features by Contrasting Cluster Assignments: https://arxiv.org/abs/2006.09882 (code available at https://github.com/facebookresearch/swav)
 * SCAN: Learning to Classify Images without Labels: https://arxiv.org/abs/2005.12320 (code available at https://github.com/wvangansbeke/Unsupervised-Classification)
 * Local Aggregation for Unsupervised Learning of Visual Embeddings: https://arxiv.org/pdf/1903.12355.pdf
-
+* Kmeans-pytorch: https://github.com/subhadarship/kmeans_pytorch

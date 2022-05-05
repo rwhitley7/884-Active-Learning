@@ -78,7 +78,7 @@ if __name__ == '__main__':
             i += 1
 
 
-    #numpy.save("features.npy", train_embeddings)
+    numpy.save("features.npy", train_embeddings)
 
 
 
