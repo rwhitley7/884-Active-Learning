@@ -42,53 +42,71 @@ As we are attempting to find a 10% subset that produces a higher accuracy than t
 
 ## Part 2 - Different Active Learning Techniques
 
-Active Learning ...
+### Least Confidence:
+After training on a subset of the training dataset, the model is tested on the remainder of the training dataset.
+Choose the 10% of images that have the lowest confidence i.e. the ones the model struggles with the most.
+
+### 1 vs 2:
+1. After training on a subset of the training dataset, the model is tested on the remainder of the training dataset.
+2. Calculate the difference in the confidence values for the top 2 classes.
+3. Choose the 10% of images that have the lowest difference i.e. the ones that are close to decision boundaries.
+
+### Learning Loss for Active Learning (LL4AL):
+Loss Prediction Module (LPM) is connected to feature maps from target model.
+LPM units consist of GAP, FC, ReLU.
+During training iterations, LPM chooses which data to use, data is passed through the system, all weights are updated.
+
+### KMeans:
+1.	Extract features using transfer learning
+2.	Cluster unlabelled data in k centres
+3.	Start with 10% data closest to the cluster centres
+4.	Choose 10% data farthest from cluster centres
+
+### Pretext Tasks for Active Learning (PT4AL):
+Initially, entire training set (50,000 images) is unlabeled and K = 1000.
+ResNet-18 is used as the backbone network for the pretext task and the main task learner.
 
 
 
+## Evaluation Results
 
+### Active Learning : Method 1 - Least Confidence
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/47718656/166968764-d46db83b-0a18-45c3-8870-ab4816794bba.jpg">
+</p>
 
+### Active Learning : Method 2 - 1 vs 2
+<p align="center">
+  <img src="https://user-images.githubusercontent.com/47718656/166969087-bf9404fe-78df-4171-b6a1-085957424316.png">
+</p>
 
+### Active Learning : Method 3 - LL4AL
+<p align="center">
+    <img src="https://user-images.githubusercontent.com/47718656/166969355-4c94c393-a42e-4e42-ad32-c55e04d60f17.jpg">
+    <img src="https://user-images.githubusercontent.com/47718656/166969379-a1ddacc5-eb6e-4604-b856-09112a37776b.jpg">
+</p>
+  
+### Active Learning : Method 4 - KMeans
+<p align="center">
+      <img src="https://user-images.githubusercontent.com/47718656/166969649-7a1ad987-8fea-4ea1-bfd2-387ebc84c851.jpg">
+</p>
 
+### Active Learning : Method 5 - PT4AL
+<p align="center">
+        <img src="https://user-images.githubusercontent.com/47718656/166970061-2545209a-9c1d-4bc5-ae2a-8ca0a71fef7c.jpg">
+        <img src="https://user-images.githubusercontent.com/47718656/166970084-50a4d22c-1f18-4b6a-a77d-a502448d6b3a.jpg">  
+</p>
 
-
-
-### Evaluation Results
-
-Active Learning : Method 1 - Least Confidence
-
-![Active Learning Method 1 - Least Confidence](https://user-images.githubusercontent.com/47718656/166968764-d46db83b-0a18-45c3-8870-ab4816794bba.jpg)
-
-Active Learning : Method 2 - 1 vs 2
-
-![Active Learning  Method 2 - 1 vs 2](https://user-images.githubusercontent.com/47718656/166969087-bf9404fe-78df-4171-b6a1-085957424316.png)
-
-Active Learning : Method 3 - LL4AL [3]
-
-![Active Learning Method 3 - LL4AL  3  1](https://user-images.githubusercontent.com/47718656/166969355-4c94c393-a42e-4e42-ad32-c55e04d60f17.jpg)
-
-![Active Learning Method 3 - LL4AL  3  2](https://user-images.githubusercontent.com/47718656/166969379-a1ddacc5-eb6e-4604-b856-09112a37776b.jpg)
-
-Active Learning : Method 4 - KMeans
-
-![Active Learning Method 4 - KMeans](https://user-images.githubusercontent.com/47718656/166969649-7a1ad987-8fea-4ea1-bfd2-387ebc84c851.jpg)
-
-Active Learning : Method 5 - PT4AL [4]
-
-![Active Learning  Method 5 - PT4AL  4  1](https://user-images.githubusercontent.com/47718656/166970061-2545209a-9c1d-4bc5-ae2a-8ca0a71fef7c.jpg)
-
-![Active Learning Method 5 - PT4AL  4  2](https://user-images.githubusercontent.com/47718656/166970084-50a4d22c-1f18-4b6a-a77d-a502448d6b3a.jpg)
-
-Comparison of AL Techniques
-
-![Comparison of AL Techniques](https://user-images.githubusercontent.com/47718656/166970424-643a79b4-a61a-49b7-8618-2a30260d203b.jpg)
-
+### Comparison of AL Techniques
+<p align="center">
+          <img src="https://user-images.githubusercontent.com/47718656/166970424-643a79b4-a61a-49b7-8618-2a30260d203b.jpg">
+</p>
 PT4L achieves almost same accuracy as random 80% of the dataset using only 40%.  Our implementations achieve almost same accuracy as random 70% of the dataset using only 40%.  LL4AL and K-Means performed slightly worse than randomly choosing.
 
 
 
 
-### Relevant Papers and Github Repos
+## Relevant Papers and Github Repos
 
 Coresets/Images Summarization/Contrastive Learning are techniques used to create a subset of images that are much smaller than the dataset that still capture similar information and can be used to reduce labeling and computational costs.
 
