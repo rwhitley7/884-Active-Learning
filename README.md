@@ -110,29 +110,13 @@ The training and testing can be found in "main.py." Within this file, the amount
 ### Least Confidence and 1v2
 Choosing the indices with the lowest confidence or the smallest difference in the highest and second highest confidence can be found by runnning "python3 alearn.py." 1v2 is the current default, but uncommenting the line "s_inds = list(torch.topk(vals,10)[1].cpu().numpy())" will calculate the indices using the least confidence. After running the file, the new indices will be saved.
 
-## Relevant Papers and Github Repos
+## References
 
-Coresets/Images Summarization/Contrastive Learning are techniques used to create a subset of images that are much smaller than the dataset that still capture similar information and can be used to reduce labeling and computational costs.
-
-Some papers on Image Summarization:
-* Image Corpus Representative Summarization: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/document/8919310 (code available at https://github.com/Anurag14/ImageCorpusSummarization however it is not explained at all)
-* Image Summarization Using Unsupervised Learning: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/document/9441682
-* Less is more: https://arxiv.org/abs/2104.12835
-
-Some papers on Coresets:
 * Extending Contrastive Learning to Unsupervised Coreset Selection: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/stamp/stamp.jsp?tp=&arnumber=9680708
-
-Some papers on Contrastive Learning:
 * A Framework and Review: https://ieeexplore-ieee-org.proxy1.cl.msu.edu/stamp/stamp.jsp?tp=&arnumber=9226466
 * Understanding Contrastive Learning Requires Incorporating Inductive Biases: https://arxiv.org/pdf/2202.14037.pdf
 * A Simple Framework for Contrastive Learning of Visual Representations: https://arxiv.org/abs/2002.05709 (code available at https://github.com/google-research/simclr)
 * Unsupervised Learning of Visual Features by Contrasting Cluster Assignments: https://arxiv.org/abs/2006.09882 (code available at https://github.com/facebookresearch/swav)
-
-Some papers on Image Clustering:
 * SCAN: Learning to Classify Images without Labels: https://arxiv.org/abs/2005.12320 (code available at https://github.com/wvangansbeke/Unsupervised-Classification)
 * Local Aggregation for Unsupervised Learning of Visual Embeddings: https://arxiv.org/pdf/1903.12355.pdf
-
-Some papers on active learning:
-* Bayesian Batch Active Learning as Sparse Subset Approximation: https://arxiv.org/pdf/1908.02144.pdf
-
 
